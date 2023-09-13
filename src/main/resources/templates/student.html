@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Enrollment Application</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div>
+    <header>
+        <a th:href="@{/student(student_id=${student_id})}" >
+            Student Profile
+        </a>
+        <div>
+            <a href="/">Log Out</a>
+        </div>
+    </header>
+</div>
+<main>
+    <div>
+        <!-- Profile -->
+        <div th:if="not ${show_courses}">
+            <h2 >Your Student Profile</h2>
+            <br>
+            <dl>
+                <dt> First Name </dt>
+                <dd th:text="${student.firstName}"></dd>
+                <dt> Last Name</dt>
+                <dd th:text="${student.lastName}"></dd>
+                <dt>Email Address</dt>
+                <dd th:text="${student.email}"></dd>
+                <dt>Date of Birth</dt>
+                <dd th:text="${student.dateOfBirth}"></dd>
+            </dl>
+
+            <dl>
+                <dt>Start Year</dt>
+                <dd  th:text="${student.studentProfile.startYear}"></dd>
+                <dt>Number of Credits</dt>
+                <dd th:text="${student.studentProfile.numberOfCredits}"></dd>
+                <dt>Graduated</dt>
+                <dd  th:text="${student.studentProfile.isGraduated ? 'Yes' : 'No'}"></dd>
+                <dt>Current GPA</dt>
+                <dd th:text="${student.studentProfile.gpa}"></dd>
+            </dl>
+            <a  th:href="@{/student/courses#courses-available(student_id=${student_id})}">Enroll in courses</a>
+            <a  th:href="@{/student/courses#courses-enrolled(student_id=${student_id})}">View enrolled courses</a>
+        </div>
+        <!-- COURSES -->
+        <div th:if="${show_courses}">
+            <h2  id="courses-available">Available Courses to Enroll</h2>
+            <br>
+            <div >
+                <div th:each="course: ${all_courses}" th:if=" not ${#sets.contains(student_courses, course)}">
+                    <div >
+                        <div>
+                            <h4  th:text="${#strings.abbreviate(course.title, 120) + '--' + #strings.abbreviate(course.description, 130)}">Course</h4>
+                        </div>
+                        <div>
+                            <form th:action="@{/student/enroll(student_id=${student_id}, course_id=${course.courseId})}" method="post">
+                                <button type="submit" >
+                                    Enroll Now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 th:if="${not student_courses.empty}" id="courses-enrolled">You are Enrolled in the Following Courses</h2>
+            <div >
+                <div th:each="course: ${student_courses}">
+                    <div>
+                        <div>
+                            <h4 th:text="${#strings.abbreviate(course.title, 120)}">Course</h4>
+                            <p th:text="${#strings.abbreviate(course.description, 130)}"> Description</p>
+                        </div>
+                        <div >
+                            <form th:action="@{/student/leave_course(student_id=${student_id}, course_id=${course.courseId})}" th:if="${#sets.contains(student_courses, course)}" method="post">
+                                <button type="submit" >
+                                    Leave Course
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

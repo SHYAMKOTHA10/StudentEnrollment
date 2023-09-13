@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Student Enrollment Application</title>
+</head>
+<body>
+<div>
+  <main>
+    <a href="/">
+      Nagpur University
+    </a>
+    <div >
+      <h1>Student Enrollment Application Form</h1>
+      <hr style="width:38%;text-align:left;margin-left:0">
+    </div>
+    <div>
+      <h2 >
+        Student Contact Information</h4>
+        <form action="/register" method="get">
+          <div>
+            <div >
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required name="firstName">
+              <div>
+                &nbsp; &nbsp; &nbsp; *Valid first name is required.
+              </div>
+            </div>
+            &nbsp;
+            <div>
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required name="lastName">
+              <div >
+                &nbsp; &nbsp; &nbsp; *Valid last name is required.
+              </div>
+            </div>
+            &nbsp;
+            <div>
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required placeholder="you@example.com" name="email">
+              <div>
+                &nbsp; &nbsp; &nbsp; *Please enter a valid email address.
+              </div>
+            </div>
+            &nbsp;
+            <div>
+              <label for="dateOfBirth" class="form-label">Date Of Birth</label>
+              <input type="date" class="form-control" id="dateOfBirth" required name="dateOfBirth">
+              <div>
+                &nbsp; &nbsp; &nbsp; *Please choose a valid birth date
+              </div>
+            </div>
+          </div>
+          &nbsp;
+          <h2 >Program Details</h2>
+          <div >
+            <div >
+              <label for="fieldOfStudy" >Field Of Study</label>
+              <select required id="fieldOfStudy" name="fieldOfStudy">
+                <option value="">Choose Your Major</option>
+                <option>Electrical Engineering</option>
+                <option>Computer Science</option>
+                <option>Architecture</option>
+              </select>
+            </div>
+            &nbsp;
+            <div>
+              <label for="degree" >Desired Degree</label>
+              <select required id="degree" name="degree">
+                <option value="">Choose Desired Degree</option>
+                <option value="BACHELOR">Bachelor</option>
+                <option value="MASTER">Master</option>
+                <option value="PHD">Phd</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div>
+            <button type="submit">Register Student</button>
+          </div>
+        </form>
+    </div>
+  </main>
+</div>
+</body>
+</html>

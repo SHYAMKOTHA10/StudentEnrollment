@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User login</title>
+</head>
+<body class="d-flex flex-column min-vh-100 text-center">
+<div>
+    <header>
+        <a href="/">
+            Nagpur University
+        </a>
+    </header>
+</div>
+<main>
+    <form action="/login" method="post">
+        <h1>Please sign in</h1>
+        <div role="alert" th:if="${error}" th:text="${error_message}"></div>
+        <div>
+            <label for="floatingInput">Email address</label>
+            <input id="floatingInput" placeholder="name@example.com" type="email" name="email">
+        </div>
+        &nbsp;
+        <div >
+            <label for="floatingPassword">Password</label>
+            <input id="floatingPassword" placeholder="Last Name" name="password" type="password">
+        </div>
+        <br>
+        <button type="submit">Log in</button>
+    </form>
+</main>
+</body>
+</html>

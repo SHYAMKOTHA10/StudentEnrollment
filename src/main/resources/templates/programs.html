@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Enrollment Application</title>
+</head>
+<body>
+<div>
+    <header>
+        <a href="/">
+            Nagpur University
+        </a>
+        <ul>
+            <li><a href="/students">Students</a></li>
+            <li><a href="/scores">Scores</a></li>
+            <li><a href="/programs">Programs</a></li>
+
+        </ul>
+        <div >
+            <a href="login">Login</a>
+            <a href="/registration.html">Register</a>
+        </div>
+    </header>
+</div>
+<main>
+    <div>
+        <!-- PROGRAMS -->
+        <div>
+            <h2 th:if="${show_programs}">Currently registered students, by program</h2>
+            <hr th:if="${show_programs}" style="width:32%;text-align:left;margin-left:0">
+            <div th:if="${show_programs}" th:each="program: ${programs}">
+                <div>
+                    <h2 th:text="${program.fieldOfStudy + ' (' + program.degree} + ' )'"></h2>
+                    <table th:if="${not program.students.empty}">
+                        <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email Address</th>
+                            <th scope="col">Date of Birth</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="student: ${program.students}">
+                            <td th:each="value: ${student.firstName}" th:text="${value}">Blank</td>
+                            <td th:each="value: ${student.lastName}" th:text="${value}">Blank</td>
+                            <td th:each="value: ${student.email}" th:text="${value}">Blank</td>
+                            <td th:each="value: ${student.dateOfBirth}" th:text="${value}">Blank</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- SCORES -->
+        <div th:if="${show_scores}">
+            <h2>All Active Students, sorted by GPA</h2>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Current GPA</th>
+                    <th scope="col">Number of Credits</th>
+                    <th scope="col">Start Year</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="studentProfile: ${students_profiles}">
+                    <td th:each="value: ${studentProfile.student.firstName}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${studentProfile.student.lastName}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${studentProfile.gpa}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${studentProfile.numberOfCredits}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${studentProfile.startYear}" th:text="${value}">Blank</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- STUDENTS -->
+        <div th:if="${show_students}">
+            <h2 >All Registered Students in the University</h2>
+            <br>
+            <table >
+                <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Date of Birth</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student: ${students}">
+                    <td th:each="value: ${student.firstName}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${student.lastName}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${student.email}" th:text="${value}">Blank</td>
+                    <td th:each="value: ${student.dateOfBirth}" th:text="${value}">Blank</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>
