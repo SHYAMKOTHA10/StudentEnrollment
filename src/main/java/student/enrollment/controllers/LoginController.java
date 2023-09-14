@@ -24,7 +24,7 @@ public class LoginController {
     /**
      * Shows the login form to the user
      */
-    @GetMapping("/login")
+    @GetMapping("/studentlogin")
     public String login() {
         return "login";
     }
@@ -33,7 +33,7 @@ public class LoginController {
      * Validates the data sent to the server when a user attempts to login.
      * Redirects to the student view if login is successful
      */
-    @PostMapping("/login")
+    @PostMapping("/studentlogin")
     public String studentLogin(@RequestParam("email") String email,
                                @RequestParam("password") String password,
                                Model model) {
