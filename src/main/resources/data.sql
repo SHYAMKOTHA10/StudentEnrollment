@@ -9,16 +9,16 @@ INSERT INTO COURSES (title, description, number_of_credits) VALUES ('Virtualizat
 DELETE FROM STUDENTS;
 DELETE FROM STUDENT_PROFILES;
 
-INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (500, 83.34, 'FALSE', 2022);
+INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (500, 83.34, FALSE, 2022);
 INSERT INTO STUDENTS (first_name, last_name, email, date_of_birth, profile_id) VALUES ('Shyamsunder', 'Kotha', 'kshyamhcl@gmail.com', '1978-05-10', 1);
 
-INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (450, 75, 'FALSE', 2021);
+INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (450, 75, FALSE, 2021);
 INSERT INTO STUDENTS (first_name, last_name, email, date_of_birth, profile_id) VALUES ('Ajantha', 'Kotha', 'aj@gmail.com', '1985-07-27', 2);
 
-INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (700, 87.5, 'FALSE', 2021);
+INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (700, 87.5, FALSE, 2021);
 INSERT INTO STUDENTS (first_name, last_name, email, date_of_birth, profile_id) VALUES ('Srineeth', 'Kotha', 'kothasrineeth@gmail.com', '2012-02-03', 3);
 
-INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (1000, 100, 'TRUE', 2019);
+INSERT INTO STUDENT_PROFILES (number_of_credits, gpa, is_graduated, start_year) VALUES (1000, 100, TRUE, 2019);
 INSERT INTO STUDENTS (first_name, last_name, email, date_of_birth, profile_id) VALUES ('Aanvi', 'Kotha', 'ak@gmail.com', '2017-10-13', 4);
 
 DELETE FROM PROGRAMS;
