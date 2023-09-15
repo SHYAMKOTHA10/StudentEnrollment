@@ -81,7 +81,7 @@ public class StudentsController {
         }
 
         Optional<Course> course = coursesService.findCourse(courseId);
-        if (!student.isPresent()) {
+        if (!course.isPresent()) {
             System.err.printf("Trying to enroll a student to course Id: %d that doesn't exist%n",
                     courseId);
             return "redirect:/";
@@ -115,7 +115,7 @@ public class StudentsController {
         }
 
         Optional<Course> course = coursesService.findCourse(courseId);
-        if (!student.isPresent()) {
+        if (!course.isPresent()) {
             System.err.printf("Trying to un-enroll a student from course Id: %d that doesn't " +
                             "exist%n",
                     courseId);
