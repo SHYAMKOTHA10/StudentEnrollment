@@ -38,7 +38,7 @@ public class LoginController {
                                @RequestParam("password") String password,
                                Model model) {
         Optional<Student> student = studentsService.findStudentByEmail(email);
-        if (student.isEmpty()) {
+        if (!student.isPresent()) {
             model.addAttribute("error", true);
             model.addAttribute("error_message", "Student with this email wasn't found");
             return "login";

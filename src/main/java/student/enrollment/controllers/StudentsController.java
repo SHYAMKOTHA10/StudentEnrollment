@@ -33,7 +33,7 @@ public class StudentsController {
     @RequestMapping("/student")
     public String getStudentProfile(@RequestParam("student_id") Long studentId, Model model) {
         Optional<Student> student = studentsService.findStudentById(studentId);
-        if (student.isEmpty()) {
+        if (!student.isPresent()) {
             System.err.println(String.format("Student with Id %d doesn't exist",
                     studentId));
             return "redirect:/";
@@ -52,7 +52,7 @@ public class StudentsController {
     public String getAllCourses(@RequestParam("student_id") Long studentId, Model model) {
 
         Optional<Student> student = studentsService.findStudentById(studentId);
-        if (student.isEmpty()) {
+        if (!student.isPresent()) {
             System.err.println(String.format("Student with Id %d doesn't exist",
                     studentId));
             return "redirect:/";
@@ -74,14 +74,14 @@ public class StudentsController {
                                  Model model) {
         Optional<Student> student = studentsService.findStudentById(studentId);
 
-        if (student.isEmpty()) {
+        if (!student.isPresent()) {
             System.err.printf("Trying to enroll a student with Id %d that doesn't exist%n",
                     studentId);
             return "redirect:/";
         }
 
         Optional<Course> course = coursesService.findCourse(courseId);
-        if (course.isEmpty()) {
+        if (!student.isPresent()) {
             System.err.printf("Trying to enroll a student to course Id: %d that doesn't exist%n",
                     courseId);
             return "redirect:/";
@@ -108,14 +108,14 @@ public class StudentsController {
                               Model model) {
         Optional<Student> student = studentsService.findStudentById(studentId);
 
-        if (student.isEmpty()) {
+        if (!student.isPresent()) {
             System.err.printf("Trying to un-enroll a student with Id %d that doesn't exist%n",
                     studentId);
             return "redirect:/";
         }
 
         Optional<Course> course = coursesService.findCourse(courseId);
-        if (course.isEmpty()) {
+        if (!student.isPresent()) {
             System.err.printf("Trying to un-enroll a student from course Id: %d that doesn't " +
                             "exist%n",
                     courseId);
