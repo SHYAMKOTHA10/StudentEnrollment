@@ -25,6 +25,15 @@ public class RegistrationController {
     }
 
     /**
+     * Shows the registration form to the user
+     */
+    @GetMapping("/showregistration")
+    public String showregistration() {
+        return "registration";
+    }
+
+
+    /**
      * Handles the form submission when a new student registers to the university
      */
     @GetMapping("/register")

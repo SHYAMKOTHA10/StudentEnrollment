@@ -34,23 +34,6 @@ public class HomePageController {
         this.programService = programService;
         this.coursesService = coursesService;
     }
-
-    /**
-     * Shows all the courses on the homepage
-     */
-    @GetMapping("/courses")
-    public String getNumberOfStudentPerCourse(Model model) {
-        List<Course> courses =
-                coursesService.getAllCourses();
-        model.addAttribute("courses", courses);
-
-        model.addAttribute("show_students", false);
-        model.addAttribute("show_courses", true);
-        model.addAttribute("show_programs", false);
-        model.addAttribute("show_scores", false);
-        return "programs";
-    }
-
     /**
      * Shows a list of all the students, registered to the university
      */
@@ -93,6 +76,22 @@ public class HomePageController {
         model.addAttribute("show_students", false);
         model.addAttribute("show_courses", false);
         model.addAttribute("show_programs", true);
+        model.addAttribute("show_scores", false);
+        return "programs";
+    }
+
+    /**
+     * Shows all the courses on the homepage
+     */
+    @GetMapping("/courses")
+    public String getNumberOfStudentPerCourse(Model model) {
+        List<Course> courses =
+                coursesService.getAllCourses();
+        model.addAttribute("courses", courses);
+
+        model.addAttribute("show_students", false);
+        model.addAttribute("show_courses", true);
+        model.addAttribute("show_programs", false);
         model.addAttribute("show_scores", false);
         return "programs";
     }
