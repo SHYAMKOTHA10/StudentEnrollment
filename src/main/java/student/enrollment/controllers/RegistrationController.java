@@ -50,6 +50,6 @@ public class RegistrationController {
 
         studentsService.addStudent(firstName, lastName, email, dateOfBirth, program);
 
-        return "redirect:/";
+        return "redirect:/students";
     }
 }
