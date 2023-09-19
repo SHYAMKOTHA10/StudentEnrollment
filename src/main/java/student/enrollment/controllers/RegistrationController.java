@@ -44,7 +44,7 @@ public class RegistrationController {
                                            LocalDate dateOfBirth,
                                    @RequestParam("fieldOfStudy") String fieldOfStudy,
                                    @RequestParam("degree") String degreeString) {
-        Program.Degree degree = Program.Degree.valueOf(degreeString.toUpperCase(Locale.ROOT));
+        Program.Degree degree = Program.Degree.valueOf(degreeString.toUpperCase());
         Program program = programService.getOrCreateProgram(fieldOfStudy, degree);
 
         studentsService.addStudent(firstName, lastName, email, dateOfBirth, program);
